@@ -52,7 +52,7 @@
     <h1>Item.java</h1>
 
     <div class="beschreibung">
-        Die Klasse <b>Item</b> repräsentiert einsammelbare Gegenstände im Spiel. Sie werden zufällig erzeugt, fallen über das Spielfeld und bewegen sich dabei leicht nach links oder rechts.
+        Die Klasse <b>Item</b> kontrolliert einsammelbare Objekte im Spiel. Sie werden zufällig erzeugt und haben zufällige Grafiken, fallen nach unten und bewegen sich dabei nach links oder rechts.
     </div>
 
     <br/>
@@ -95,7 +95,7 @@ Item
         <tr>
             <td>richtungSwitch</td>
             <td>boolean</td>
-            <td>Speichert, ob die Bewegungsrichtung während des Fallens gewechselt werden soll</td>
+            <td>Gibt an, ob die Bewegungsrichtung während des Fallens gewechselt werden soll</td>
         </tr>
 
         <tr>
@@ -115,7 +115,7 @@ Item
 
         <tr>
             <td>Item()</td>
-            <td>Erstellt ein neues Item, weist eine zufällige Geschwindigkeit zu und wählt zufällig eines von vier möglichen Bildern aus</td>
+            <td>Das Item bekommt eine zufällige Grafik sowie eine zufällige Geschwindigkeit zugewiesen</td>
         </tr>
     </table>
 
@@ -129,27 +129,27 @@ Item
 
         <tr>
             <td>act()</td>
-            <td><a href="https://www.greenfoot.org/files/javadoc/greenfoot/package-summary.html"><i>Greenfoot-Methode</i></a>; prüft, ob das Spiel pausiert ist und ruft anschließend fallen() auf</td>
+            <td><a href="https://www.greenfoot.org/files/javadoc/greenfoot/package-summary.html"><i>Greenfoot-Methode</i></a></td>
         </tr>
 
         <tr>
             <td>addedToWorld(World welt)</td>
-            <td>Wird automatisch aufgerufen, wenn das Item zur Welt hinzugefügt wird; ruft richtungen() auf</td>
+            <td><a href="https://www.greenfoot.org/files/javadoc/greenfoot/package-summary.html"><i>Greenfoot-Methode</i></a></td>
         </tr>
 
         <tr>
             <td>richtungen()</td>
-            <td>Legt die Bewegungsrichtung des Items fest und bestimmt, ob während des Fallens ein Richtungswechsel erfolgt</td>
+            <td>Legt fest, in welche Richtung das Item fällt und ob während des Fallens ein Richtungswechsel stattfinden wird</td>
         </tr>
 
         <tr>
             <td>xPosition()</td>
-            <td>Berechnet anhand der aktuellen Richtung die nächste X-Position des Items</td>
+            <td>Berechnet die aktuelle X-Koordinate, in die das Item fallen soll</td>
         </tr>
 
         <tr>
             <td>fallen()</td>
-            <td>Bewegt das Item nach unten und entfernt es aus der Welt, sobald es den unteren Bildschirmrand verlassen hat</td>
+            <td>Lässt das Item immer weiter in Richtung Boden fallen</td>
         </tr>
     </table>
 
@@ -162,18 +162,8 @@ Item
         </tr>
 
         <tr>
-            <td>Actor</td>
-            <td>Item erbt von dieser Klasse</td>
-        </tr>
-
-        <tr>
             <td>Spiel</td>
             <td>Über getPausiert() wird geprüft, ob das Spiel pausiert ist</td>
-        </tr>
-
-        <tr>
-            <td>World</td>
-            <td>Das Item wird einer Welt hinzugefügt und später wieder aus dieser entfernt</td>
         </tr>
     </table>
 
