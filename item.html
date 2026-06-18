@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>KD Item.java</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1000px;
+            margin: 40px auto;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #2c3e50;
+            font-size: 44px;
+        }
+
+        h2 {
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 5px;
+            margin-top: 30px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th, td {
+            border: 2px solid #2c3e50;
+            border-radius: 5px;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f5f5f5;
+        }
+
+        .beschreibung {
+            background: #f9f9f9;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Item.java</h1>
+
+    <div class="beschreibung">
+        Die Klasse <b>Item</b> repräsentiert einsammelbare Gegenstände im Spiel. Sie werden zufällig erzeugt, fallen über das Spielfeld und bewegen sich dabei leicht nach links oder rechts.
+    </div>
+
+    <br/>
+    <hr/>
+
+    <h2>Vererbung</h2>
+
+    <p>
+        <strong>Item</strong> erbt von der Greenfoot-Klasse
+        <strong>Actor</strong>, hat also die Eigenschaften, welche die <a href="https://www.greenfoot.org/files/javadoc/greenfoot/Actor.html"><i>Actor-Klasse</i></a> mitliefert.
+    </p>
+
+    <pre>
+Actor
+  ↑
+Item
+    </pre>
+
+    <h2>Attribute</h2>
+
+    <table>
+        <tr>
+            <th>Attribut</th>
+            <th>Datentyp</th>
+            <th>Beschreibung</th>
+        </tr>
+
+        <tr>
+            <td>geschwindigkeit</td>
+            <td>int</td>
+            <td>Speichert die Fallgeschwindigkeit des Items</td>
+        </tr>
+
+        <tr>
+            <td>richtung</td>
+            <td>int</td>
+            <td>Speichert die Bewegungsrichtung (0 = nach links, 1 = nach rechts)</td>
+        </tr>
+
+        <tr>
+            <td>richtungSwitch</td>
+            <td>boolean</td>
+            <td>Speichert, ob die Bewegungsrichtung während des Fallens gewechselt werden soll</td>
+        </tr>
+
+        <tr>
+            <td>nahAmRand</td>
+            <td>boolean</td>
+            <td>Gibt an, ob das Item nahe am linken oder rechten Rand erzeugt wurde</td>
+        </tr>
+    </table>
+
+    <h2>Konstruktor</h2>
+
+    <table>
+        <tr>
+            <th>Methode</th>
+            <th>Beschreibung</th>
+        </tr>
+
+        <tr>
+            <td>Item()</td>
+            <td>Erstellt ein neues Item, weist eine zufällige Geschwindigkeit zu und wählt zufällig eines von vier möglichen Bildern aus</td>
+        </tr>
+    </table>
+
+    <h2>Methoden</h2>
+
+    <table>
+        <tr>
+            <th>Methode</th>
+            <th>Beschreibung</th>
+        </tr>
+
+        <tr>
+            <td>act()</td>
+            <td><a href="https://www.greenfoot.org/files/javadoc/greenfoot/package-summary.html"><i>Greenfoot-Methode</i></a>; prüft, ob das Spiel pausiert ist und ruft anschließend fallen() auf</td>
+        </tr>
+
+        <tr>
+            <td>addedToWorld(World welt)</td>
+            <td>Wird automatisch aufgerufen, wenn das Item zur Welt hinzugefügt wird; ruft richtungen() auf</td>
+        </tr>
+
+        <tr>
+            <td>richtungen()</td>
+            <td>Legt die Bewegungsrichtung des Items fest und bestimmt, ob während des Fallens ein Richtungswechsel erfolgt</td>
+        </tr>
+
+        <tr>
+            <td>xPosition()</td>
+            <td>Berechnet anhand der aktuellen Richtung die nächste X-Position des Items</td>
+        </tr>
+
+        <tr>
+            <td>fallen()</td>
+            <td>Bewegt das Item nach unten und entfernt es aus der Welt, sobald es den unteren Bildschirmrand verlassen hat</td>
+        </tr>
+    </table>
+
+    <h2>Beziehungen zu anderen Klassen</h2>
+
+    <table>
+        <tr>
+            <th>Klasse</th>
+            <th>Beziehung</th>
+        </tr>
+
+        <tr>
+            <td>Actor</td>
+            <td>Item erbt von dieser Klasse</td>
+        </tr>
+
+        <tr>
+            <td>Spiel</td>
+            <td>Über getPausiert() wird geprüft, ob das Spiel pausiert ist</td>
+        </tr>
+
+        <tr>
+            <td>World</td>
+            <td>Das Item wird einer Welt hinzugefügt und später wieder aus dieser entfernt</td>
+        </tr>
+    </table>
+
+</body>
+</html>
