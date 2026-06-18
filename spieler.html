@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>KD Spieler.java</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1000px;
+            margin: 40px auto;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #2c3e50;
+            font-size: 44px;
+        }
+
+        h2 {
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 5px;
+            margin-top: 30px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th, td {
+            border: 2px solid #2c3e50;
+            border-radius: 5px;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f5f5f5;
+        }
+
+        .beschreibung {
+            background: #f9f9f9;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Spieler.java</h1>
+
+    <div class="beschreibung">
+        Die Klasse <b>Spieler</b> managet den Spieler. Sie verarbeitet die Steuerung, das Einsammeln von Items und PowerUps und verwaltet Punkte sowie Leben.
+    </div>
+    
+    <br/>
+    <hr/>
+
+    <h2>Vererbung</h2>
+
+    <p>
+        <strong>Spieler</strong> erbt von der Greenfoot-Klasse
+        <strong>Actor</strong>, hat also die Eigenschaften, welche die <a href="https://www.greenfoot.org/files/javadoc/greenfoot/Actor.html"><i>Actor-Klasse</i></a> mitliefert.
+    </p>
+
+    <pre>
+Actor
+  ↑
+Spieler
+    </pre>
+
+    <h2>Attribute</h2>
+
+    <table>
+        <tr>
+            <th>Attribut</th>
+            <th>Datentyp</th>
+            <th>Beschreibung</th>
+        </tr>
+
+        <tr>
+            <td>geschwindigkeit</td>
+            <td>int</td>
+            <td>Bewegungsgeschwindigkeit des Spielers</td>
+        </tr>
+
+        <tr>
+            <td>punkte</td>
+            <td>int</td>
+            <td>Aktuelle Punktzahl des Spielers</td>
+        </tr>
+
+        <tr>
+            <td>leben</td>
+            <td>int</td>
+            <td>Aktuelle Anzahl an Leben</td>
+        </tr>
+
+        <tr>
+            <td>powerUpZeit</td>
+            <td>double</td>
+            <td>Zählt die Dauer eines aktiven PowerUps</td>
+        </tr>
+
+        <tr>
+            <td>wechselAnimation</td>
+            <td>double</td>
+            <td>Wird für den Wechsel der Spieleranimation verwendet</td>
+        </tr>
+
+        <tr>
+            <td>spiel</td>
+            <td>Spiel</td>
+            <td>Referenz auf die Spielwelt</td>
+        </tr>
+
+        <tr>
+            <td>bewegungLinks</td>
+            <td>boolean</td>
+            <td>Speichert, ob sich der Spieler nach links bewegt</td>
+        </tr>
+
+        <tr>
+            <td>bewegungRechts</td>
+            <td>boolean</td>
+            <td>Speichert, ob sich der Spieler nach rechts bewegt</td>
+        </tr>
+
+        <tr>
+            <td>bewegungUnten</td>
+            <td>boolean</td>
+            <td>Speichert, ob sich der Spieler nach unten bewegt</td>
+        </tr>
+
+        <tr>
+            <td>powerUpAktiv</td>
+            <td>boolean</td>
+            <td>Gibt an, ob aktuell ein PowerUp aktiv ist</td>
+        </tr>
+
+        <tr>
+            <td>neuerHighScoreErreicht</td>
+            <td>boolean</td>
+            <td>Gibt an, ob ein neuer Highscore erreicht wurde</td>
+        </tr>
+
+        <tr>
+            <td>powerUpText</td>
+            <td>String</td>
+            <td>Speichert die aktuelle Fähigkeit des aktiven PowerUps in diesem Attribut, damit die Klasse Spiel es oben links als Text anzeigen kann</td>
+        </tr>
+    </table>
+
+    <h2>Konstruktor</h2>
+
+    <table>
+        <tr>
+            <th>Methode</th>
+            <th>Beschreibung</th>
+        </tr>
+
+        <tr>
+            <td>nicht verwendet</td>
+            <td>---</td>
+        </tr>
+    </table>
+
+    <h2>Methoden</h2>
+
+    <table>
+        <tr>
+            <th>Methode</th>
+            <th>Beschreibung</th>
+        </tr>
+
+        <tr>
+            <td>addedToWorld(World welt)</td>
+            <td><a href="https://www.greenfoot.org/files/javadoc/greenfoot/package-summary.html"><i>Greenfoot-Methode</i></a></td>
+        </tr>
+
+        <tr>
+            <td>act()</td>
+            <td><a href="https://www.greenfoot.org/files/javadoc/greenfoot/package-summary.html"><i>Greenfoot-Methode</i></a></td>
+        </tr>
+
+        <tr>
+            <td>highscore()</td>
+            <td>Prüft, ob ein neuer Highscore erreicht wurde und speichert diesen</td>
+        </tr>
+
+        <tr>
+            <td>animation()</td>
+            <td>Wechselt zwischen zwei Spielerbildern (idle Animation)</td>
+        </tr>
+
+        <tr>
+            <td>einsammeln()</td>
+            <td>Prüft, ob ein Item eingesammelt wird</td>
+        </tr>
+
+        <tr>
+            <td>powerUpReset()</td>
+            <td>Setzt ein aktives PowerUp nach einer bestimmten Zeit zurück</td>
+        </tr>
+
+        <tr>
+            <td>powerUp()</td>
+            <td>Prüft, ob ein PowerUp eingesammelt wird und legt die Eigenschaft des PowerUps fest</td>
+        </tr>
+
+        <tr>
+            <td>steuerung()</td>
+            <td>Verarbeitet Tastatur- und Mauseingaben; steuert den Spieler</td>
+        </tr>
+
+        <tr>
+            <td>schiesse()</td>
+            <td>Instanziiert eine neue Kugel</td>
+        </tr>
+
+        <tr>
+            <td>getPunkte()</td>
+            <td><b>Getter Methode</b> für das Attribut "punkte"</td>
+        </tr>
+
+        <tr>
+            <td>minusLeben()</td>
+            <td>Zieht dem Spieler ein Leben ab, kann die "gameOver" Methode der Klasse Spiel aufrufen</td>
+        </tr>
+
+        <tr>
+            <td>getLeben()</td>
+            <td><b>Getter Methode</b> für das Attribut "leben"</td>
+        </tr>
+
+        <tr>
+            <td>getPowerUpText()</td>
+            <td><b>Getter Methode</b> für das Attribut "powerUpText"</td>
+        </tr>
+
+        <tr>
+            <td>neuerHighScore()</td>
+            <td><b>Getter Methode</b> für das Attribut "neuerHighScoreErreicht" (true/false)</td>
+        </tr>
+    </table>
+
+    <h2>Beziehungen zu anderen Klassen</h2>
+
+    <table>
+        <tr>
+            <th>Klasse</th>
+            <th>Beziehung</th>
+        </tr>
+
+        <tr>
+            <td>Spiel</td>
+            <td>Referenz auf die Spielwelt</td>
+        </tr>
+
+        <tr>
+            <td>Item</td>
+            <td>Kann eingesammelt werden</td>
+        </tr>
+
+        <tr>
+            <td>PowerUp</td>
+            <td>Kann eingesammelt werden</td>
+        </tr>
+
+        <tr>
+            <td>Kugel</td>
+            <td>Wird durch die Methode schiesse() instanziiert</td>
+        </tr>
+
+        <tr>
+            <td>UserInfo</td>
+            <td><a href="https://www.greenfoot.org/files/javadoc/greenfoot/UserInfo.html"><i>Greenfoot-Klasse</i></a></td>
+        </tr>
+    </table>
+
+</body>
+</html>
